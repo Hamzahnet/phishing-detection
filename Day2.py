@@ -1,4 +1,4 @@
-# url featres extractor for fishing detection dissert
+# url feature extractor for phishing detection dissert
 def extract_features(url):
     length = len(url)
     dot = url.count('.')
