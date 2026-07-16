@@ -1,5 +1,6 @@
-# url featres extractor for fishing detection dissert
+
 import numpy as np
+
 def extract_features(url):
     length = len(url)
     dot = url.count('.')
