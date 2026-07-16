@@ -1,4 +1,5 @@
 # url featres extractor for fishing detection dissert
+import numpy as np
 def extract_features(url):
     length = len(url)
     dot = url.count('.')
@@ -9,10 +10,18 @@ def extract_features(url):
 
     return hyphen, length, dot, httpcheck, special, numdig
 
+def normailise(features):
+    array = np.array([features])
+    normailised = (array - array.min()) / (array.max() - array.min())
+    return normailised
+        
+
 def main():
     url = "http://paypa1-secure.login.verify@192.168.1.1/account?user=admin&token=abc123"
     features = extract_features(url)
+    normailised = normailise(features)
     print(f"url: {url}")
     print(f"features: {features}")
+    print(f"normalised: {normailised}")
 
 main()
