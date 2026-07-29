@@ -1,0 +1,17 @@
+url,label
+https://www.google.com,0
+https://www.amazon.co.uk,0
+https://www.github.com,0
+https://www.linkedin.com,0
+https://www.bbc.co.uk,0
+https://www.microsoft.com,0
+https://www.apple.com,0
+https://www.youtube.com,0
+http://paypa1-secure.login.verify.com/account,1
+http://amazon-security-alert.tk/login?user=admin&token=abc,1
+http://apple-id-locked.click/restore?id=123456,1
+http://secure-bankofengland.suspicious.com/verify,1
+http://microsoft-alert.ru/fix?session=abc&user=admin,1
+http://halifax-bank-secure.phishing.net/login,1
+http://verify-paypal.suspicious-domain.com/account?user=test,1
+http://192.168.1.1/login?user=admin&pass=1234,1
