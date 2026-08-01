@@ -4,7 +4,7 @@ A machine learning project for detecting phishing websites through URL feature e
 
 ## What it does
 
-Analyses URLs and extracts numerical features to classify them as phishing or legitimate. The feature extraction pipeline feeds into a machine learning classifier trained on labelled URL datasets.
+Analyses URLs and extracts numerical features to classify them as phishing or legitimate. The feature extraction pipeline feeds into a logistic regression classifier trained on labelled URL datasets.
 
 ## Features extracted from URLs
 
@@ -15,10 +15,19 @@ Analyses URLs and extracts numerical features to classify them as phishing or le
 - Number of special characters (@, ?, =, &)
 - Number of digits
 
-## Current components
+## Files
 
 - `Day2.py` — URL feature extractor, normalisation pipeline, labelled dataset builder
 - `Neuron.py` — Single neuron implementation from scratch using NumPy
+- `create_dataset.py` — Creates a labelled CSV dataset of phishing and legitimate URLs
+- `train_model.py` — Trains a logistic regression classifier, evaluates accuracy and predicts new URLs
+- `urls.csv` — Labelled dataset of 16 URLs (8 legitimate, 8 phishing)
+
+## Results so far
+
+- Model accuracy: 100% on test set
+- Predicts phishing URLs with 99.97% confidence
+- Next step: train on real dataset from PhishTank or UCI ML Repository
 
 ## Run with Docker
 
@@ -38,11 +47,16 @@ Confidence: 99.68%
 
 ## Dissertation
 
-**Title:** Phishing Website Detection Using Machine Learning  
-**Supervisor:** Dr Hamza Mutaher  
-**Institution:** Birmingham City University  
+**Title:** Phishing Website Detection Using Machine Learning
+**Supervisor:** Dr Hamza Mutaher
+**Institution:** Birmingham City University
 **Module:** CMP6200 — Individual Honours Project
 
 ## Tech stack
 
-Python · NumPy · scikit-learn (coming soon) · Git
+Python · NumPy · scikit-learn · Git
+
+
+
+
+
