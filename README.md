@@ -42,7 +42,7 @@ docker run phishing-detector python predict.py "http://suspicious-site.com/login
 
 ### Output
 URL: https://www.google.com
-Prediction: ✅ Legitimate
+Prediction: Legitimate
 Confidence: 99.68%
 
 ## Dissertation
@@ -50,7 +50,7 @@ Confidence: 99.68%
 **Title:** Phishing Website Detection Using Machine Learning
 **Supervisor:** Dr Hamza Mutaher
 **Institution:** Birmingham City University
-**Module:** CMP6200 — Individual Honours Project
+
 
 ## Tech stack
 
