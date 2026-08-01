@@ -20,6 +20,22 @@ Analyses URLs and extracts numerical features to classify them as phishing or le
 - `Day2.py` — URL feature extractor, normalisation pipeline, labelled dataset builder
 - `Neuron.py` — Single neuron implementation from scratch using NumPy
 
+## Run with Docker
+
+No Python installation required.
+
+### Build the container
+docker build -t phishing-detector .
+
+### Predict a URL
+docker run phishing-detector python predict.py "https://www.google.com"
+docker run phishing-detector python predict.py "http://suspicious-site.com/login?user=admin"
+
+### Output
+URL: https://www.google.com
+Prediction: ✅ Legitimate
+Confidence: 99.68%
+
 ## Dissertation
 
 **Title:** Phishing Website Detection Using Machine Learning  
