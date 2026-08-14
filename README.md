@@ -1,62 +1,58 @@
-# Phishing Detection — Machine Learning Project
+# Phishing Website Detection Using Machine Learning
 
-A machine learning project for detecting phishing websites through URL feature extraction and classification. Built as part of my BSc Cyber Security dissertation at Birmingham City University.
+A machine learning system that detects phishing websites using 
+URL-based feature analysis. Built as part of my BSc Cyber Security 
+Honours dissertation at Birmingham City University.
 
-## What it does
+## How It Works
 
-Analyses URLs and extracts numerical features to classify them as phishing or legitimate. The feature extraction pipeline feeds into a logistic regression classifier trained on labelled URL datasets.
+The system analyses URLs by extracting numerical features that 
+distinguish phishing sites from legitimate ones — such as URL length, 
+presence of HTTPS, number of special characters, and subdomain depth.
+These features are passed through a logistic regression classifier 
+that outputs a prediction with a confidence score.
 
-## Features extracted from URLs
+## Models
 
+### Prototype Model (train_model.py)
+Built from scratch using manual feature engineering. Extracts 6 
+lexical features from any raw URL and classifies it as phishing 
+or legitimate. Demonstrates an end-to-end pipeline from a raw 
+URL string to a real-time prediction.
+
+**Features extracted:**
 - URL length
-- Number of dots (subdomain indicators)
-- HTTPS check (encrypted vs unencrypted)
+- Number of dots
+- HTTPS presence (1 or 0)
 - Number of hyphens
 - Number of special characters (@, ?, =, &)
 - Number of digits
 
-## Files
+**Results:** 100% accuracy on prototype dataset of 16 labelled URLs.
 
-- `Day2.py` — URL feature extractor, normalisation pipeline, labelled dataset builder
-- `Neuron.py` — Single neuron implementation from scratch using NumPy
-- `create_dataset.py` — Creates a labelled CSV dataset of phishing and legitimate URLs
-- `train_model.py` — Trains a logistic regression classifier, evaluates accuracy and predicts new URLs
-- `urls.csv` — Labelled dataset of 16 URLs (8 legitimate, 8 phishing)
+### Production Model (train_real.py)
+Trained on the Kaggle Web Page Phishing Detection Dataset — 
+11,430 real-world URLs with 87 pre-extracted features. 
+StandardScaler normalisation applied after train/test split 
+to prevent data leakage.
 
-## Results so far
+**Results:** 96% accuracy | 95% precision | 96% recall
 
-- Model accuracy: 100% on test set
-- Predicts phishing URLs with 99.97% confidence
-- Next step: train on real dataset from PhishTank or UCI ML Repository
-
-## Run with Docker
+## Run With Docker
 
 No Python installation required.
 
 ### Build the container
-docker build -t phishing-detector .
 
 ### Predict a URL
-docker run phishing-detector python predict.py "https://www.google.com"
-docker run phishing-detector python predict.py "http://suspicious-site.com/login?user=admin"
 
-### Output
-URL: https://www.google.com
-Prediction: ✅ Legitimate
-Confidence: 99.68%
+## Tech Stack
+- Python
+- scikit-learn
+- pandas
+- NumPy
+- Docker
 
-## Dissertation
-
-**Title:** Phishing Website Detection Using Machine Learning
-**Supervisor:** Dr Hamza Mutaher
-**Institution:** Birmingham City University
-**Module:** CMP6200 — Individual Honours Project
-
-## Tech stack
-
-Python · NumPy · scikit-learn · Git
-
-
-
-
-
+## Dataset
+Kaggle Web Page Phishing Detection Dataset — 11,430 URLs, 
+87 features, balanced 50/50 phishing and legitimate.
