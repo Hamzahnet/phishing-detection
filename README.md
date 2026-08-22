@@ -57,6 +57,16 @@ No Python installation required.
 Kaggle Web Page Phishing Detection Dataset — 11,430 URLs, 
 87 features, balanced 50/50 phishing and legitimate.
 
+
+## Model Comparison (compare_models.py)
+| Model               | Accuracy | Precision | Recall | F1  |
+| Logistic Regression | 96%      | 96%       | 95%    | 96% |
+| Random Forest       | 97%      | 97%       | 96%    | 97% |
+Random Forest outperforms Logistic Regression across all metrics.
+The modest gap suggests Logistic Regression remains the viable interpretable baseline
+whilst Random Forest captures non-linier patterns more.
+
+
 ## Dissertation
 - **Title:** Phishing Website Detection Using Machine Learning
 - **Supervisor:** Dr Hamza Mutaher
