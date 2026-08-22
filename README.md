@@ -51,12 +51,15 @@ Confidence: 99.68%
 **Supervisor:** Dr Hamza Mutaher
 **Institution:** Birmingham City University
 
-
 ## Tech stack
-
 Python · NumPy · scikit-learn · Git
 
 
-
-
-
+## Model comparison (compare_models.py)
+comparative evaluation between logistic regression and random forest on the same dataset and train/test split.
+| Model               | Accuracy | Precision | Recall | F1 |
+| Logistic Regression | 96%      | 96%       | 95%    | 96% |
+| Random Forest       | 97%      | 97%       | 96%    | 97% |
+random forest outperforms logistic regresssion across all metrics.
+the modest gap suggests logistic regression remains the viable interpretable
+baseline whilst random forest captures non-linier patterns more.
