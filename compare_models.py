@@ -39,3 +39,23 @@ print(classification_report(y_test, lr_pred, target_names=['legitimate', 'phishi
 print("=== Random Forest ===")
 print(f"Accuracy: {accuracy_score(y_test, rf_pred):.2f}")
 print(classification_report(y_test, rf_pred, target_names=['legitimate', 'phishing']))
+
+import matplotlib.pyplot as plt
+from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
+
+# Confusion matrices
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+cm_lr = confusion_matrix(y_test, lr_pred)
+cm_rf = confusion_matrix(y_test, rf_pred)
+
+ConfusionMatrixDisplay(cm_lr, display_labels=['legitimate', 'phishing']).plot(ax=axes[0])
+axes[0].set_title('Logistic Regression')
+
+ConfusionMatrixDisplay(cm_rf, display_labels=['legitimate', 'phishing']).plot(ax=axes[1])
+axes[1].set_title('Random Forest')
+
+plt.tight_layout()
+plt.savefig('confusion_matrices.png')
+plt.show()
+print("Confusion matrices saved.")
