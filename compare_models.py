@@ -5,6 +5,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.preprocessing import StandardScaler
+from sklearn.neural_network import MLPClassifier
+
 
 # Load dataset
 df = pd.read_csv('dataset_phishing.csv')
@@ -20,6 +22,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
+
+
 
 # Logistic Regression
 lr = LogisticRegression(max_iter=5000)
@@ -40,20 +44,51 @@ print("=== Random Forest ===")
 print(f"Accuracy: {accuracy_score(y_test, rf_pred):.2f}")
 print(classification_report(y_test, rf_pred, target_names=['legitimate', 'phishing']))
 
+
+
+
+
+
+
+
+# Neural Network
+nn = MLPClassifier(hidden_layer_sizes=(64, 32), max_iter=1000, random_state=42)
+nn.fit(X_train_scaled, y_train)
+nn_pred = nn.predict(X_test_scaled)
+
+print("=== Neural Network (MLP) ===")
+print(f"Accuracy: {accuracy_score(y_test, nn_pred):.2f}")
+print(classification_report(y_test, nn_pred, target_names=['legitimate', 'phishing']))
+'''the mlp classsifier is a built in multi layer perceptron that handles the
+ back propigation and forward pass and weight ajustments
+ the hidden layer is enitiating the layers of the neural network 64 being the first layer the second is 32
+ and the output layer is one, it goes through a activation ReLU by default'''
+
+
+
+
+
+
+
+
+# Confusion matrices
 import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
 
-# Confusion matrices
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 
 cm_lr = confusion_matrix(y_test, lr_pred)
 cm_rf = confusion_matrix(y_test, rf_pred)
+cm_nn = confusion_matrix(y_test, nn_pred)
 
 ConfusionMatrixDisplay(cm_lr, display_labels=['legitimate', 'phishing']).plot(ax=axes[0])
 axes[0].set_title('Logistic Regression')
 
 ConfusionMatrixDisplay(cm_rf, display_labels=['legitimate', 'phishing']).plot(ax=axes[1])
 axes[1].set_title('Random Forest')
+
+ConfusionMatrixDisplay(cm_nn, display_labels=['legitimate', 'phishing']).plot(ax=axes[2])
+axes[2].set_title('Neural Network (MLP)')
 
 plt.tight_layout()
 plt.savefig('confusion_matrices.png')
